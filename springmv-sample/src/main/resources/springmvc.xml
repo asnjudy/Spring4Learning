@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+    <bean id="itemsController" name="/queryItems.action" class="cn.asn.springmvc.controller.ItemsController" />
+    <bean id="itemsController2" class="cn.asn.springmvc.controller.ItemsController2" />
+
+    <!--
+     处理器映射器
+     将bean的name作为url进行查找，需要在配置Handler是指定bean name(就是URL)
+     所有的映射都实现了HandlerMapping接口
+     -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!-- 对itemsController进行url映射 -->
+                <prop key="/queryItems1.action">itemsController</prop>
+                <prop key="/queryItems2.action">itemsController</prop>
+                <prop key="/queryItems3.action">itemsController2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--
+    处理器适配器
+    所有处理器适配器都实现了HandlerAdapter接口
+     -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+    <!-- 另一个非注解的适配器 -->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+
+    <!--
+     视图解析器
+     解析jsp，默认使用jstl, classpath下要有jstl包
+     -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+
+</beans>
