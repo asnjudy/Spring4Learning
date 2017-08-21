@@ -20,19 +20,19 @@ public class ItemsController implements Controller {
         List<Items> itemsList = new ArrayList<Items>();
 
         Items items_1 = new Items();
-        items_1.setName("ÁªÏë±Ê¼Ç±¾");
+        items_1.setName("è”æƒ³ç¬”è®°æœ¬");
         items_1.setPrice(6000F);
-        items_1.setDetail("ThinkPad T430 ÁªÏë±Ê¼Ç±¾µçÄÔ£¡");
+        items_1.setDetail("ThinkPad T430 è”æƒ³ç¬”è®°æœ¬ç”µè„‘ï¼");
 
         Items items_2 = new Items();
-        items_2.setName("»ªË¶±Ê¼Ç±¾µçÄÔ");
+        items_2.setName("åç¡•ç¬”è®°æœ¬ç”µè„‘");
         items_2.setPrice(5000F);
-        items_2.setDetail("HuaShuo ¼Ç±¾µçÄÔ£¡");
+        items_2.setDetail("HuaShuo è®°æœ¬ç”µè„‘ï¼");
 
         Items items_3 = new Items();
-        items_3.setName("Ğ¡Ã×ÊÖ»ú");
+        items_3.setName("å°ç±³æ‰‹æœº");
         items_3.setPrice(2000F);
-        items_3.setDetail("Ğ¡Ã×6ÊÖ»ú£¡");
+        items_3.setDetail("å°ç±³6æ‰‹æœºï¼");
 
         itemsList.add(items_1);
         itemsList.add(items_2);

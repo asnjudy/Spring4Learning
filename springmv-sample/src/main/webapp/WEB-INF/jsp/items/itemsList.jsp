@@ -5,7 +5,7 @@
   Time: 14:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -34,13 +34,15 @@
             <td>商品描述</td>
             <td>操作</td>
         </tr>
-        <c:forEach  items="${itemsList}" var="item">
+        <c:forEach items="${itemsList }" var="item">
             <tr>
-                <td>${item.name}</td>
-                <td>${ item.price }</td>
-                <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss" /> </td>
-                <td>${item.detail}</td>
-                <td><a href="${pageContext.request.contextPath}/item/editItem.action?id=${item.id}">修改</a> </td>
+                <td>${item.name }</td>
+                <td>${item.price }</td>
+                <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                <td>${item.detail }</td>
+
+                <td><a href="${pageContext.request.contextPath}/item/editItem.action?id=${item.id}">修改</a></td>
+
             </tr>
         </c:forEach>
     </table>

@@ -1,26 +1,21 @@
 package cn.asn.springmvc.controller;
 
 import cn.asn.springmvc.po.Items;
-import org.springframework.web.HttpRequestHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by xuwentang on 2017/8/21.
  */
-public class ItemsController2 implements HttpRequestHandler {
+@Controller
+public class ItemsController3 {
 
-
-
-    @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    @RequestMapping("/queryItems")
+    public ModelAndView queryItems() {
 
         List<Items> itemsList = new ArrayList<Items>();
 
@@ -43,7 +38,10 @@ public class ItemsController2 implements HttpRequestHandler {
         itemsList.add(items_2);
         itemsList.add(items_3);
 
-        request.setAttribute("itemsList", itemsList);
-        request.getRequestDispatcher("/WEB-INF/jsp/items/itemsList.jsp").forward(request, response);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("itemsList", itemsList);
+        modelAndView.setViewName("items/itemsList");
+
+        return modelAndView;
     }
 }
