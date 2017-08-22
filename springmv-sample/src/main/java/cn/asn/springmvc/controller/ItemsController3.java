@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 public class ItemsController3 {
 
-    @RequestMapping("/queryItems")
+    @RequestMapping("/api/queryItems")
     public ModelAndView queryItems() {
 
         List<Items> itemsList = new ArrayList<Items>();
