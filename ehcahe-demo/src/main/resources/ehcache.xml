@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ehcache>
+
+    <diskStore path="java.io.tmpdir/easylink-mall-web/ehcache" />
+
+    <!-- 默认缓存 -->
+    <defaultCache
+        maxElementsInMemory="10000"
+        eternal="false"
+        timeToIdleSeconds="120"
+        timeToLiveSeconds="120"
+        maxElementsOnDisk="100000000"
+        diskExpiryThreadIntervalSeconds="120"
+        memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap" />
+    </defaultCache>
+
+    <!-- 商户申请数据缓存，数据缓存40分钟 -->
+    <cache name="merchant-apply-com.asn.cache"
+           eternal="false"
+           timeToIdleSeconds="2400"
+           timeToLiveSeconds="2400"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000000"
+           diskExpiryThreadIntervalSeconds="120"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU" />
+</ehcache>

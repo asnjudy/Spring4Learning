@@ -16,9 +16,14 @@ public class MybatisFirst {
 
 
     public static void findUserById() throws IOException {
-        String resource = "SqlMapConfig.xml";
+
+
+        String resource = "SqlMapConfig.xml";  // 全局配置文件
         InputStream inputStream = Resources.getResourceAsStream(resource);
+        // 根据配置文件创建工厂
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 打开一个用于操作数据库（增、删、改、查）的会话
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         User user = sqlSession.selectOne("test.findUserById", 1);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ehcache>
-    <diskStore path="/develop/ehcache"/>
+    <diskStore path="d:/develop_ehcache"/>
     <defaultCache
             maxElementsInMemory="1000"
             maxElementsOnDisk="10000000"

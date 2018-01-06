@@ -1,12 +1,13 @@
 package cn.asn.mybatis.po;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by xuwentang on 2017/8/21.
  */
-public class User {
+public class User implements Serializable {
 
 
     //属性名要和数据库表的字段对应
