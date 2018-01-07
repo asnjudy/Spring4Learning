@@ -4,6 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <!--
+     为springmvc的相关bean实例配置，如配置：
+     1）配置视图解析器：
+        视图-> /WEB-INF/jsp/视图名.jsp
+     -->
+
 
 
 </beans>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-        version="3.1">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
 
     <context-param>
@@ -10,13 +10,31 @@
         <param-value>classpath*:applicationContext.xml</param-value>
     </context-param>
 
+    <!--
+    配置Web容器监听器（Tomcat支持Web容器监听器）
+      ContextLoaderListener 通过Web容器上下文参数contextConfigLocation，获取Spring配置文件的位置。
+      ContextLoaderListener 根据获取的Spring配置信息，初始化Spring的Web应用上下文（WebApplicationContext）
+    并把Web容器上下文（ServletContext实例）设置到WebApplicationContext类的 ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE 常量中
+     -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+
+    <!--
+     SpringMVC配置，以 .do 为结尾的请求，使用SpringMVC进行分发处理
+     -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--
+        contextConfiguration 配置 springmvc 加载配置文件的位置（配置处理器映射、适配器等等）
+        若不配置，则默认加载 WEB-INF/servletName-servlet (/WEB-INF/springmvc.xml)
+         -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/springmvc.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -24,6 +42,5 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-
 
 </web-app>
