@@ -11,7 +11,8 @@
     <bean id="itemsController" name="/queryItems.action" class="cn.asn.springmvc.controller.ItemsController" />
     <bean id="itemsController2" class="cn.asn.springmvc.controller.ItemsController2" />
 
-    <context:component-scan base-package="cn.asn.springmvc.controller"></context:component-scan>
+    <!-- 自动注解扫描 -->
+    <context:component-scan base-package="cn.asn.springmvc.controller" />
     <!-- 注解的映射器 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
     <!-- 注解的适配器 -->

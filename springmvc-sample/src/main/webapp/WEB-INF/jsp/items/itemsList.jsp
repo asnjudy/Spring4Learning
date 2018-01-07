@@ -12,41 +12,46 @@
 <head>
     <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
     <title>商品查询列表</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/ccs/bootstrap-theme.css">
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/item/queryItem.action" method="post">
+<div class="container">
+    <form action="item/queryItem.action" method="post">
 
-    查询条件：
-    <table width="100%" border="1">
-        <tr>
-            <td>
-                <input type="submit" value="查询" />
-            </td>
-        </tr>
-    </table>
-
-    <table width="100%" border=1>
-        <tr>
-            <td>商品名称</td>
-            <td>商品价格</td>
-            <td>生产日期</td>
-            <td>商品描述</td>
-            <td>操作</td>
-        </tr>
-        <c:forEach items="${itemsList }" var="item">
+        <p>查询条件：</p>
+        <table class="table table-bordered">
             <tr>
-                <td>${item.name }</td>
-                <td>${item.price }</td>
-                <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                <td>${item.detail }</td>
-
-                <td><a href="${pageContext.request.contextPath}/item/editItem.action?id=${item.id}">修改</a></td>
-
+                <td>
+                    <input type="submit" value="查询" />
+                </td>
             </tr>
-        </c:forEach>
-    </table>
-</form>
+        </table>
 
+        <table class="table table-bordered">
+            <tr>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>生产日期</td>
+                <td>商品描述</td>
+                <td>操作</td>
+            </tr>
+            <c:forEach items="${itemsList }" var="item">
+                <tr>
+                    <td>${item.name }</td>
+                    <td>${item.price }</td>
+                    <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                    <td>${item.detail }</td>
+
+                    <td><a href="item/editItem.action?id=${item.id}">修改</a></td>
+
+                </tr>
+            </c:forEach>
+        </table>
+    </form>
+</div>
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

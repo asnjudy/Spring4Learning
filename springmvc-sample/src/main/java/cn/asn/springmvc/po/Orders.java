@@ -18,10 +18,10 @@ public class Orders {
 
     private String note;
 
-    //用户信息
+    //鐢ㄦ埛淇℃伅
     private User user;
 
-    //订单明细
+    //璁㈠崟鏄庣粏
     private List<Orderdetail> orderdetails;
 
     public Integer getId() {

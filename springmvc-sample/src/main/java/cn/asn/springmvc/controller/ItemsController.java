@@ -14,10 +14,12 @@ import java.util.List;
  */
 public class ItemsController implements Controller {
     @Override
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
         List<Items> itemsList = new ArrayList<Items>();
+        System.out.println("Received request: " + request.getContextPath());
+        System.out.println("Received request: " + request.getPathInfo());
 
         Items items_1 = new Items();
         items_1.setName("联想笔记本");
@@ -41,7 +43,7 @@ public class ItemsController implements Controller {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("itemsList", itemsList);
 
-        modelAndView.setViewName("/WEB-INF/jsp/items/itemsList.jsp");
+        modelAndView.setViewName("items/itemsList");
         return modelAndView;
     }
 }

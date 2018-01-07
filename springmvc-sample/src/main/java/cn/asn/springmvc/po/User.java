@@ -8,10 +8,10 @@ import java.util.Date;
 public class User {
 
     private int id;
-    private String username;// 用户姓名
-    private String sex;// 性别
-    private Date birthday;// 生日
-    private String address;// 地址
+    private String username;// 鐢ㄦ埛濮撳悕
+    private String sex;// 鎬у埆
+    private Date birthday;// 鐢熸棩
+    private String address;// 鍦板潃
 
     public int getId() {
         return id;
