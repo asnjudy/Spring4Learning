@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//disconf.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="disconf.mybatis.mapper.AppMapper">
+    <resultMap id="BaseResultMap" type="disconf.mybatis.entity.App">
+        <id column="app_id" jdbcType="BIGINT" property="appId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="emails" jdbcType="VARCHAR" property="emails"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    app_id, name, description, create_time, update_time, emails
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from "public"."app"
+        where app_id = #{appId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from "public"."app"
+    where app_id = #{appId,jdbcType=BIGINT}
+  </delete>
+
+    <!--  <insert id="insert" parameterType="disconf.mybatis.entity.App" useGeneratedKeys="true" >
+        insert into "public"."app" (name, description, create_time, update_time, emails)
+        values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+          #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{emails,jdbcType=VARCHAR})
+      </insert>-->
+
+    <insert id="insert" parameterType="disconf.mybatis.entity.App">
+        <selectKey keyProperty="appId" order="BEFORE" resultType="java.lang.Long">
+            select nextval('app_app_id_seq'::regclass)
+        </selectKey>
+        insert into "public"."app" (app_id, name, description, create_time, update_time, emails)
+        values (#{appId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+        #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{emails,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="disconf.mybatis.entity.App">
+        insert into "public"."app"
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="appId != null">
+                app_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="emails != null">
+                emails,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="appId != null">
+                #{appId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="emails != null">
+                #{emails,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="disconf.mybatis.entity.App">
+        update "public"."app"
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="emails != null">
+                emails = #{emails,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where app_id = #{appId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="disconf.mybatis.entity.App">
+    update "public"."app"
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      emails = #{emails,jdbcType=VARCHAR}
+    where app_id = #{appId,jdbcType=BIGINT}
+  </update>
+</mapper>

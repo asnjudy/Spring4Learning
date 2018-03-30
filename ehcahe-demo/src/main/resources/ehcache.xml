@@ -16,7 +16,7 @@
     </defaultCache>
 
     <!-- 商户申请数据缓存，数据缓存40分钟 -->
-    <cache name="merchant-apply-com.asn.cache"
+    <cache name="merchant-apply-com.sample.cache"
            eternal="false"
            timeToIdleSeconds="2400"
            timeToLiveSeconds="2400"

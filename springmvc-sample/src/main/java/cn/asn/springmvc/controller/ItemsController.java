@@ -15,11 +15,10 @@ import java.util.List;
 public class ItemsController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+        System.out.println("ItemsController.handleRequest ...");
 
         List<Items> itemsList = new ArrayList<Items>();
         System.out.println("Received request: " + request.getContextPath());
-        System.out.println("Received request: " + request.getPathInfo());
 
         Items items_1 = new Items();
         items_1.setName("联想笔记本");

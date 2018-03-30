@@ -8,17 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    String path = request.getContextPath();
+%>
 <html>
 <head>
     <meta http-equiv="content-Type" content="text/html; charset=UTF-8">
     <title>商品查询列表</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/ccs/bootstrap-theme.css">
+    <link rel="stylesheet" href="<%= path%>/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="<%= path%>/bootstrap/ccs/bootstrap-theme.css">
 </head>
 <body>
 
 <div class="container">
-    <form action="item/queryItem.action" method="post">
+    <form action="<%= path%>/item/queryItem" method="post">
 
         <p>查询条件：</p>
         <table class="table table-bordered">
@@ -43,15 +46,13 @@
                     <td>${item.price }</td>
                     <td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                     <td>${item.detail }</td>
-
-                    <td><a href="item/editItem.action?id=${item.id}">修改</a></td>
-
+                    <td><a href="<%= path%>/item/editItem?id=${item.id}">修改</a></td>
                 </tr>
             </c:forEach>
         </table>
     </form>
 </div>
 
-<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="<%= path%>/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

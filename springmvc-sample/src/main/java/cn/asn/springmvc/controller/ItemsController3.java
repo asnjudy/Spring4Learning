@@ -16,7 +16,7 @@ public class ItemsController3 {
 
     @RequestMapping("/api/queryItems")
     public ModelAndView queryItems() {
-
+        System.out.println(this.toString() + " queryItems ...");
         List<Items> itemsList = new ArrayList<Items>();
 
         Items items_1 = new Items();

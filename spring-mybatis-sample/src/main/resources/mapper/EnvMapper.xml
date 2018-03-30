@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//disconf.mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="disconf.mybatis.mapper.EnvMapper">
+  <resultMap id="BaseResultMap" type="disconf.mybatis.entity.Env">
+    <id column="env_id" jdbcType="BIGINT" property="envId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    env_id, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from "public"."env"
+    where env_id = #{envId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from "public"."env"
+    where env_id = #{envId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="disconf.mybatis.entity.Env">
+    insert into "public"."env" (env_id, name)
+    values (#{envId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="disconf.mybatis.entity.Env">
+    insert into "public"."env"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="envId != null">
+        env_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="envId != null">
+        #{envId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="disconf.mybatis.entity.Env">
+    update "public"."env"
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where env_id = #{envId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="disconf.mybatis.entity.Env">
+    update "public"."env"
+    set name = #{name,jdbcType=VARCHAR}
+    where env_id = #{envId,jdbcType=BIGINT}
+  </update>
+</mapper>

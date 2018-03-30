@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="nanjing" class="com.sample.bean.Address"
+          p:contury="中国"
+          p:city="南京" />
+    <bean id="shanghai" class="com.sample.bean.Address"
+          p:contury="中国"
+          p:city="上海" />
+
+    <bean id="user" class="com.sample.bean.User"
+          p:id="1"
+          p:birthday="2010/10/01"
+          p:address-ref="shanghai">
+        <property name="name">
+            <value><![CDATA[张三<font color="red">ZS</font>]]]></value>
+        </property>
+        <!--<property name="address" ref="nanjing" />-->
+        <property name="hobbies">
+            <set>
+                <value>Music</value>
+                <value>Walking</value>
+                <value>Swimming</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="userFactory" class="com.sample.bean.UserFactory" />
+    <bean id="tom" factory-bean="userFactory"
+          factory-method="createTomUser" />
+    <bean id="jim" class="com.sample.bean.UserFactory" factory-method="createJimUser" />
+
+    <bean id="magicUser" class="com.sample.bean.MagicUser">
+        <lookup-method name="getUser" bean="user" />
+    </bean>
+</beans>

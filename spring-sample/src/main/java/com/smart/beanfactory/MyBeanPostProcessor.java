@@ -1,6 +1,6 @@
 package com.smart.beanfactory;
 
-import com.smart.Car;
+import com.smart.chapter3.Car;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 

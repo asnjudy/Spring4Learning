@@ -1,0 +1,2 @@
+1224 [main] INFO  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+19675758 [main] INFO  disconf.mybatis.service.AppService - insert app to db successfully!

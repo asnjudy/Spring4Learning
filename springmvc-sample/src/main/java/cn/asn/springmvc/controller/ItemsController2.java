@@ -21,6 +21,7 @@ public class ItemsController2 implements HttpRequestHandler {
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("ItemsController2.handleRequest ...");
 
         List<Items> itemsList = new ArrayList<Items>();
 
